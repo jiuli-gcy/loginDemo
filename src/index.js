@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from 'Pages/App';
+import NavigationBar from 'Components/NavigationBar'
+//import * as serviceWorker from './serviceWorker';
 
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import routes from 'Routers';
 
 import { createStore, applyMiddleware } from 'redux'
 
@@ -23,10 +27,15 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={ store }>
-        <App />
+        <Router>
+            <div>
+                <NavigationBar />
+                { routes }
+            </div>
+        </Router>
     </Provider>,
     
     document.getElementById('root')
 );
 
-serviceWorker.unregister();
+//serviceWorker.unregister();
