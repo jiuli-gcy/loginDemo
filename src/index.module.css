@@ -370,7 +370,7 @@ address, caption, cite, code, dfn, em, strong, th, var {
 a{
     text-decoration:none;
 }
-a:link{
+/* a:link{
     color:#fff;
 }
 a:visited{
@@ -381,7 +381,7 @@ a:hover{
 }
 a:active{
     color:#fff;
-}
+} */
 input::-ms-clear{
     display:none;
     }

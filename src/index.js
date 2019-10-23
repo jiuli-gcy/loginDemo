@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.module.css';
 import App from 'Pages/App';
 import NavigationBar from 'Components/NavigationBar'
 //import * as serviceWorker from './serviceWorker';
