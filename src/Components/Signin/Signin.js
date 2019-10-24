@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SignInForm } from 'Components'
+import SignInForm from './SignInForm'
 import { Link } from 'react-router-dom'
 import style from './style.module.scss'
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import { Route } from 'react-router-dom'
 import App from 'Pages/App';
-import Signin from 'Pages/Sign/Signin'
-import Signup from 'Pages/Sign/Signup'
+import Signin from 'Components/Signin/Signin'
+import Signup from 'Components/Signup/Signup'
 
 export default (
     <main role="main" className="container">
