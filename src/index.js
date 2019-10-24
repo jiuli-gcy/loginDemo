@@ -27,7 +27,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={ store }>
-        <Router>
+        <Router routes={routes}>
             <div>
                 <NavigationBar />
                 { routes }
