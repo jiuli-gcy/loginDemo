@@ -1,5 +1,7 @@
 import NavigationBar from './NavigationBar'
+import FlashMessages from './Flash/FlashMessages'
 
 export{
-    NavigationBar
+    NavigationBar,
+    FlashMessages
 }

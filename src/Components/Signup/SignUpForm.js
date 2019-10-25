@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import style from './style.module.scss';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-//import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 //import axios from 'axios';
 
 class SignupForm extends Component {
@@ -18,12 +18,14 @@ class SignupForm extends Component {
         }
     }
 
-    static contextTypes = {
-        router: PropTypes.object
-    }
+    // static contextTypes = {
+    //     router: PropTypes.object
+    // }
 
     static propTypes = {
-        userSignupRequest:PropTypes.func.isRequired
+        userSignupRequest:PropTypes.func.isRequired,
+        addFlashMessage:PropTypes.func.isRequired,
+        isUserExists: PropTypes.func.isRequired
     }
 
     onChange = (e) => {
@@ -37,12 +39,36 @@ class SignupForm extends Component {
         //axios.post('api/users',{user:this.state})
         this.props.userSignupRequest(this.state).then(
             ()=>{
-                console.dir(this.context);
-                //this.props.history.push('/');
+                this.props.addFlashMessage({
+                    type: "success",
+                    text: "注册成功，欢迎！"
+                })
+                //console.dir(this.context);
+                this.props.history.push('/');
             },
             ({ response }) => { this.setState({ errors: response.data,isLoading:true})}
         );
     }
+
+    checkUserExists = (e) => {
+        const field = e.target.name;
+        const val = e.target.value;
+        if (val !== '') {
+          this.props.isUserExists(val).then(res => {
+            let errors = this.state.errors;
+            let invalid;
+            if (res.data.user) {
+              errors[field] = field+"已经被注册过";
+              invalid = true;
+            } else {
+              errors[field] = '';
+              invalid = false
+            }
+    
+            this.setState({ errors, invalid });
+          });
+        }
+      }
 
     render() {
         const { errors } = this.state;
@@ -51,13 +77,15 @@ class SignupForm extends Component {
                 <h1 className="h3 mb-4 font-weight-normal text-center">账号注册</h1>
 
                 <label htmlFor="inputName" className="sr-only">用户名</label>
-                <input type="text" id="inputName" name="username"
+                <input type="text" id="inputName" name="username" onBlur={ this.checkUserExists }
                 className={classnames(style.uname,'form-control',{'is-invalid':errors.username})}
                 placeholder="用户名" value={this.state.username} onChange={ this.onChange } ></input>
           { errors.username && <span className='form-text text-muted'>{ errors.username }</span> }
 
                 <label htmlFor="inputEmail" className="sr-only">邮箱地址</label>
-                <input type="email" id="inputEmail" name="email"
+                <input 
+                type="email" id="inputEmail" name="email" 
+                onBlur={ this.checkUserExists }
                 className={ classnames(style.email,'form-control',{'is-invalid':errors.email})} 
                 placeholder="邮箱地址" value={ this.state.email } onChange={ this.onChange } ></input>
           { errors.email && <span className='form-text text-muted'>{ errors.email }</span> }
@@ -80,4 +108,4 @@ class SignupForm extends Component {
         )
     }
 }
-export default SignupForm;
+export default withRouter(SignupForm);

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.module.css';
 import App from 'Pages/App';
 import NavigationBar from 'Components/NavigationBar'
+import FlashMessage from 'Components/Flash/FlashMessages'
 //import * as serviceWorker from './serviceWorker';
 
 import logger from 'redux-logger';
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Router routes={routes}>
             <div>
                 <NavigationBar />
+                <FlashMessage />
                 { routes }
             </div>
         </Router>

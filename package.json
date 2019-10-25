@@ -39,5 +39,5 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6"
   },
-  "proxy": "http://localhost:8898"
+  "proxy": "http://localhost:8899"
 }

@@ -1,4 +1,4 @@
-import { ADD_FLASH_MESSAGE } from 'assets/constants';
+import { ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE } from 'assets/constants';
 
 export const addFlashMessage = (message) => {
     return {
@@ -6,3 +6,9 @@ export const addFlashMessage = (message) => {
         message
     }
 };
+export const deleteFlashMessage = (id) => {
+    return {
+        type: DELETE_FLASH_MESSAGE,
+        id
+    }
+}
