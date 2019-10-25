@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.module.css';
-import App from 'Pages/App';
 import NavigationBar from 'Components/NavigationBar'
 import FlashMessage from 'Components/Flash/FlashMessages'
-//import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -40,4 +39,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-//serviceWorker.unregister();
+serviceWorker.unregister();

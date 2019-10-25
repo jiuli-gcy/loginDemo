@@ -6,9 +6,9 @@ import Signin from 'Components/Signin/Signin'
 import Signup from 'Components/Signup/Signup'
 
 export default (
-    <main role="main" className="container">
+    <div role="main" className="container">
         <Route exact path="/" component={ App }></Route>
         <Route path="/login" component={ Signin }></Route>
         <Route path="/signup" component={ Signup }></Route>
-    </main>
+    </div>
 )
